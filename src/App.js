@@ -3,6 +3,7 @@ import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
+import Signin from './components/Signin/Signin'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -76,6 +77,7 @@ displayFaceBox = (box) => {
               params={particlesOptions}
             />
         <Navigation />
+        <Signin />
         <Logo />
         <Rank />
         <ImageLinkForm
