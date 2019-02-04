@@ -27,16 +27,18 @@ class Signin extends React.Component  {
         email:this.state.signInEmail,
         password:this.state.signInPassword
       })
-    }).then(response => response.json())
-      .then(data=> {
-        if(data=== 'success'){
-          this.props.onRounteChange('home');
+    })
+    .then(response => response.json())
+        .then(user => {
+          if(user.id){
+            this.props.loadUser(user)
+            this.props.onRouteChange('home');
         }
       })
 }
 
   render(){
-    const { onRounteChange } = this.props;
+    const { onRouteChange } = this.props;
     return (
     <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
@@ -73,7 +75,7 @@ class Signin extends React.Component  {
               value="Sign in"/>
             </div>
             <div className="lh-copy mt3">
-              <p   onClick ={()=> onRounteChange('register')}  className="f6 link dim black db pointer">Register</p>
+              <p   onClick ={()=> onRouteChange('register')}  className="f6 link dim black db pointer">Register</p>
             </div>
           </div>
         </main>

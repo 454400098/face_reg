@@ -89,7 +89,7 @@ displayFaceBox = (box) => {
       .catch(err => console.log(err));
   }
 
-  onRounteChange =(route)=>{
+  onRouteChange =(route)=>{
     if(route=== 'signout'){
       this.setState({isSignedIn : false})
     }
@@ -107,11 +107,11 @@ displayFaceBox = (box) => {
       <Particles className='particles'
               params={particlesOptions}
         />
-        <Navigation isSignedIn={isSignedIn} onRounteChange={this.onRounteChange}/>
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
         {route === 'home'
           ?<div>
             <Logo />
-            <Rank />
+          <Rank name={this.state.user.name} entries={this.state.user.entries}/>
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
@@ -120,8 +120,8 @@ displayFaceBox = (box) => {
               </div>
               :(
                 route==='signin'
-                ?<Signin onRounteChange= {this.onRounteChange}/>
-                :<Register loadUser ={this.loadUser} onRounteChange= {this.onRounteChange}/>
+                ?<Signin loadUser={this.loadUser}  onRouteChange= {this.onRouteChange}/>
+                :<Register loadUser ={this.loadUser} onRouteChange= {this.onRouteChange}/>
               )
       }
       </div>
