@@ -11,7 +11,7 @@ const Navigation = ({onRounteChange,isSignedIn}) => {
       return (
         <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
           <p onClick={()=>onRounteChange('signin')} className='f3 link dim black underline pa3 pointer'> Sign in </p>
-          <p onClick={()=>onRounteChange('register')} className='f3 link dim black underline pa3 pointer'> Sign Register </p>
+          <p onClick={()=>onRounteChange('register')} className='f3 link dim black underline pa3 pointer'> Register </p>
         </nav>
     );
   }

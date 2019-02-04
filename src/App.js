@@ -121,7 +121,7 @@ displayFaceBox = (box) => {
               :(
                 route==='signin'
                 ?<Signin onRounteChange= {this.onRounteChange}/>
-                :<Register onRounteChange= {this.onRounteChange}/>
+                :<Register loadUser ={this.loadUser} onRounteChange= {this.onRounteChange}/>
               )
       }
       </div>

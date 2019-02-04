@@ -25,7 +25,7 @@ class Register extends React.Component{
 
 
   onSubmitSignIn =() =>{
-    fetch('http://localhost:3000/signin',{
+    fetch('http://localhost:3000/register',{
       method: 'post',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -43,6 +43,7 @@ class Register extends React.Component{
     }
 
   render(){
+
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
           <main className="pa4 black-80">
@@ -55,8 +56,9 @@ class Register extends React.Component{
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="text"
                   name="name"
-                  id="name" />
+                  id="name"
                   onChange={this.onNameChange}
+                   />
                 </div>
                 <div className="mt3">
                   <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
@@ -74,8 +76,9 @@ class Register extends React.Component{
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
                   name="password"
-                  id="password" />
+                  id="password"
                   onChange={this.onPasswordChange}
+                  />
                 </div>
               </fieldset>
               <div className="">
