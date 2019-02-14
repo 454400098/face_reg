@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin'
@@ -10,10 +9,6 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 
-
-const app = new Clarifai.App({
- apiKey: 'febdc7fd3ea145a5932b993107c9c7d4'
-});
 
 
 const particlesOptions= {
@@ -81,14 +76,18 @@ displayFaceBox = (box) => {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-      app.models
-      .predict(
-       Clarifai.FACE_DETECT_MODEL,
-       this.state.input)
+        fetch('https://limitless-wave-17142.herokuapp.com/imageurl',{
+        method: 'post',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          input: this.state.input
+        })
+      })
+      .then(response => response.json())
        .then(
          response=>{
            if(response){
-             fetch('http://localhost:3000/image',{
+             fetch('https://limitless-wave-17142.herokuapp.com/image',{
              method: 'put',
              headers:{'Content-Type':'application/json'},
              body:JSON.stringify({
@@ -101,6 +100,7 @@ displayFaceBox = (box) => {
                entries:count
              }))
            })
+           .catch(console.log)
          }
            this.displayFaceBox(this.calculateFaceLocation(response))
        })
